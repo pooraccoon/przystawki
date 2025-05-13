@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Losowanie przystawek</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2em;
+      background-color: #f9f9f9;
+    }
+    button {
+      padding: 1em;
+      font-size: 1.2em;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    ul {
+      margin-top: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Losowanie 14 przystawek</h1>
+  <button onclick="wylosujPrzystawki()">Wylosuj</button>
+  <ul id="lista"></ul>
+
+  <script>
+    const przystawki = [
+      "Domowe K*C - panierowane paseczki z kurczaka z dipem",
+      "Deska pieczonych i wędzonych mięs",
+      "Gruszka pieczona w bekonie podlaskim z wędzonym serem",
+      "Pasztet z jelenia z sosem owocowym",
+      "Śledź z jabłkiem, chrzanem, piernikiem i czosnkiem niedźwiedzim",
+      "Deska serów regionalnych i ze świata",
+      "Sałatka z grillowaną piersią z kurczaka, serem podlaskim, pomidorkami i kaparami",
+      "Sałatka ziemniaczana z miso i boczkiem/tofu",
+      "Tartaletki z wędzoną rybą i ziołami",
+      "Tartaletki z twarogiem i rakami",
+      "Paté na chałce z czekoladą",
+      "Smalec z suszonymi owocami i czosnkiem niedźwiedzim",
+      "Kaszanka z piklowaną cebulą, orzechami i czekoladą",
+      "Grzanki z musem grzybowym i migdałami (Vege)",
+      "Hummus z kiszonymi burakami (Vege)",
+      "Carpaccio z pomidorów z olejem ziołowym, karczochami i orzechami (Vege)",
+      "Sałatka z cieciorką, pomarańczą, warzywami z grilla i curry (Vege)",
+      "Carpaccio z buraka z wiśniami, rukolą i wędzonym serem (VEGE)"
+    ];
+
+    function wylosujPrzystawki() {
+      const lista = document.getElementById("lista");
+      lista.innerHTML = "";
+
+      const kopia = [...przystawki];
+      const wylosowane = [];
+
+      for (let i = 0; i < 14; i++) {
+        const index = Math.floor(Math.random() * kopia.length);
+        wylosowane.push(kopia.splice(index, 1)[0]);
+      }
+
+      wylosowane.forEach((item, idx) => {
+        const li = document.createElement("li");
+        li.textContent = `${idx + 1}. ${item}`;
+        lista.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
